@@ -11,25 +11,31 @@
             <Border 
                 Stroke="LightGray" 
                 StrokeThickness="2">
-                <VerticalStackLayout
-                     <Grid
-                         RowDefinitions="*"
+                <VerticalStackLayout>
+                    <Grid
+                         RowDefinitions="*, *"
                          ColumnDefinitions="*,*"
                          RowSpacing="8"
                          ColumnSpacing="4"
                          Padding="16">
-                    <Label Text="Proporcione el peso en kilogramos:" 
+                    <Label Text="Proporcione el peso en kilogramos: "
+                           Grid.Column="1"
+                           Grid.Row="0"
                            VerticalOptions="Center"/>
-                    <Entry BackgroundColor="WhiteSmoke" 
-                           x:Name="PesoLabel" 
+                    <Entry BackgroundColor="WhiteSmoke"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Text="{Binding Path=Peso}"
                            Keyboard="Numeric" 
                            ClearButtonVisibility="WhileEditing"/>
                     <Label Grid.Row="1"
-                           Grid.Column=""
-                           Text="Proporcione la estatura en metros"
+                           Grid.Column="1"
+                           Text="Proporcione la estatura en metros: "
                            VerticalOptions="Center"/>
                     <Entry BackgroundColor="LightCyan" 
-                           x:Name="EstaturaLabel" 
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Text="{Binding Path=Estatura}" 
                            Keyboard="Numeric" 
                            ClearButtonVisibility="WhileEditing"/>
                     </Grid>
@@ -41,10 +47,12 @@
                 Spacing="24">
                 <Button Text="Calcular" 
                         MinimumWidthRequest="80" 
-                        Clicked="OnCalcularButtonClicked"/>
+                        
+                        Command="{Binding Path=CalcularCommand}"/>
                 <Button Text="Limpiar" 
                         MinimumWidthRequest="80" 
-                        Clicked="OnLimpiarButtonClicked"/>
+                        
+                        Command="{Binding Path=LimpiarCommand}"/>
             </HorizontalStackLayout>
 
             <Border 
@@ -57,11 +65,11 @@
                     Padding="16" 
                     Spacing="6">
                     <Label Text="El indice de masa corporal de la persona es: "/>
-                    <Label Text="23.4567" HorizontalOptions="Center" 
+                    <Label Text="{Binding Path=Imc}" 
                            FontSize="Medium" FontAttributes="Bold" 
                            x:Name="ImcLabel"/>
                     <Label Text="La situacion nutricional de la persona es: "/>
-                    <Label Text="Peso normal" 
+                    <Label Text="{Binding Path=SituacionNutricional}" 
                            HorizontalOptions="Center" 
                            FontSize="Medium" FontAttributes="Bold" 
                            x:Name="SituacionNutricionalLabel"/>
