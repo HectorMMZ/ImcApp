@@ -19,17 +19,18 @@
                          ColumnSpacing="4"
                          Padding="16">
                     <Label Text="Proporcione el peso en kilogramos: "
-                           Grid.Column="1"
+                           Grid.Column="0"
                            Grid.Row="0"
                            VerticalOptions="Center"/>
                     <Entry BackgroundColor="WhiteSmoke"
-                           Grid.Row="1"
+                           Grid.Row="0"
                            Grid.Column="1"
                            Text="{Binding Path=Peso}"
                            Keyboard="Numeric" 
-                           ClearButtonVisibility="WhileEditing"/>
+                           ClearButtonVisibility="WhileEditing"
+                           TextColor="Black"/>
                     <Label Grid.Row="1"
-                           Grid.Column="1"
+                           Grid.Column="0"
                            Text="Proporcione la estatura en metros: "
                            VerticalOptions="Center"/>
                     <Entry BackgroundColor="LightCyan" 
@@ -37,7 +38,8 @@
                            Grid.Column="1"
                            Text="{Binding Path=Estatura}" 
                            Keyboard="Numeric" 
-                           ClearButtonVisibility="WhileEditing"/>
+                           ClearButtonVisibility="WhileEditing"
+                           TextColor="Black"/>
                     </Grid>
                 </VerticalStackLayout>
             </Border>

@@ -4,7 +4,7 @@
     {
         public static decimal IndiceDeMasaCorporal(decimal peso, decimal estatura)
         {
-            return peso / (estatura * estatura);
+            return (peso / (estatura * estatura));
         }
 
         public static string SituacionNutricional(decimal imc)

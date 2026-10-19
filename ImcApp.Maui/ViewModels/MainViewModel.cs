@@ -10,6 +10,7 @@ namespace ImcApp.Maui.ViewModels
         private string _estatura;
         private string _imc;
         private string _situacionNutricional;
+
         public string Peso
         {
             get => _peso;
@@ -96,6 +97,7 @@ namespace ImcApp.Maui.ViewModels
             // TryParse me devuelve falso o verdadero
             bool pesoEsValido = decimal.TryParse(Peso, out peso);
             bool estaturaEsValida = decimal.TryParse(Estatura, out estatura);
+
             if (pesoEsValido && estaturaEsValida)
             {
                 decimal imc = CalculadoraDeIndiceDeMasaCorporal.IndiceDeMasaCorporal(peso, estatura);
