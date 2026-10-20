@@ -48,12 +48,10 @@
                 HorizontalOptions="Center" 
                 Spacing="24">
                 <Button Text="Calcular" 
-                        MinimumWidthRequest="80" 
-                        
+                        MinimumWidthRequest="80"             
                         Command="{Binding Path=CalcularCommand}"/>
                 <Button Text="Limpiar" 
-                        MinimumWidthRequest="80" 
-                        
+                        MinimumWidthRequest="80"               
                         Command="{Binding Path=LimpiarCommand}"/>
             </HorizontalStackLayout>
 

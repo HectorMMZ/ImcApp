@@ -1,86 +1,28 @@
-﻿using ImcApp.Maui.Models;
-using System.ComponentModel;
-using System.Windows.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using ImcApp.Maui.Models;
 
 namespace ImcApp.Maui.ViewModels
 {
-    public class MainViewModel : INotifyPropertyChanged
+    //Una clase parcial significa que solo sea una parte de ella
+    public partial class MainViewModel : ObservableObject
     {
+        [ObservableProperty]
         private string _peso;
+        [ObservableProperty]
         private string _estatura;
+        [ObservableProperty]
         private string _imc;
+        [ObservableProperty]
         private string _situacionNutricional;
-
-        public string Peso
-        {
-            get => _peso;
-            set
-            {
-                if (_peso != value)
-                {
-                    _peso = value;
-                    OnPropertyChanged(nameof(Peso)); // Esto sera un aviso para que la interfaz de usuario cambie
-                }
-            }
-        }
-        public string Estatura
-        {
-            get => _estatura;
-            set
-            {
-                if (_estatura != value)
-                {
-                    _estatura = value;
-                    OnPropertyChanged(nameof(Estatura));
-                }
-            }
-        }
-        public string Imc
-        {
-            get => _imc;
-            set
-            {
-                if (_imc != value)
-                {
-                    _imc = value;
-                    OnPropertyChanged(nameof(Imc));
-                }
-            }
-        }
-        public string SituacionNutricional
-        {
-            get => _situacionNutricional;
-            set
-            {
-                if (_situacionNutricional != value)
-                {
-                    _situacionNutricional = value;
-                    OnPropertyChanged(nameof(SituacionNutricional));
-                }
-            }
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        public void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        public ICommand CalcularCommand { get; private set; }
-        public ICommand LimpiarCommand { get; private set; }
 
         public MainViewModel() // Constructor
         {
-            LimpiarValores();
-            CalcularCommand = new Command(Calcular);
-            LimpiarCommand = new Command(LimpiarValores);
+            Limpiar();
         }
 
-        private void LimpiarValores()
+        [RelayCommand]
+        private void Limpiar()
         {
             Peso = string.Empty;
             Estatura = string.Empty;
@@ -88,6 +30,7 @@ namespace ImcApp.Maui.ViewModels
             SituacionNutricional = string.Empty;
         }
 
+        [RelayCommand]
         public void Calcular()
         {
             // Parse convierte su argumento en decimal, pero me puede arrojar una excepcion
